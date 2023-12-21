@@ -1,0 +1,2926 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="LetterBody-root-3k">
+      <div class="letterWrapper">
+        <div id="letter">
+          <style>
+            .messageContainer {
+              margin: 0;
+              padding: 0;
+              word-wrap: break-word;
+            }
+            .messageIndent {
+              margin: 0 0 0 18px;
+              padding: 0;
+            }
+            .messageHeader {
+              position: relative;
+              margin: 0;
+            }
+            .isTopPartHeader {
+              z-index: 2;
+              padding: 12px 32px;
+            }
+            .isInnerPartHeader {
+              z-index: 1;
+              margin: 16px 0 0;
+              padding: 11px 32px 0;
+              border-top: 1px solid #e8e8e8;
+            }
+            .ie7 .messageHeader {
+              zoom: 1;
+            }
+            .messageBookmark {
+              position: absolute;
+              top: 0;
+              left: 32px;
+              display: inline-block;
+              width: 28px;
+              height: 41px;
+              background-color: #c1c1c1;
+              cursor: pointer;
+            }
+            .messageBookmark:hover {
+              background-color: #b3b3b3;
+            }
+            .oldie .messageBookmark {
+              cursor: hand;
+            }
+            .messageBookmarkFlagged,
+            .messageBookmarkFlagged:hover,
+            .messageBookmarkFlagged:focus {
+              background-color: #ffad00;
+            }
+            .messageHeaderContacts {
+              margin: 0;
+              padding: 0;
+              font-size: 11px;
+            }
+            .isTopPartHeader .messageHeaderContacts {
+              margin: 0 0 0 42px;
+            }
+            .isInnerPartHeader .messageHeaderContacts {
+              margin: 0 0 0 -6px;
+            }
+            .messageHeaderContacts {
+              position: relative;
+              margin: 0;
+              padding: 0 0 0 40px;
+            }
+            .contactsRowFrom {
+              z-index: 2;
+            }
+            .contactsRowTo {
+              z-index: 1;
+            }
+            .messageHeaderLabel {
+              position: absolute;
+              top: 0;
+              left: 0;
+              display: inline-block;
+              margin: 0;
+              padding: 0 2px 0 0;
+              min-width: 40px;
+              width: 40px;
+              vertical-align: top;
+              text-align: right;
+            }
+            .ie7 .messageHeaderLabel {
+              display: inline;
+              zoom: 1;
+            }
+            .messageLabelFrom {
+              color: #666;
+              line-height: 24px;
+            }
+            .messageLabelTo {
+              color: #666;
+              line-height: 20px;
+            }
+            .messageHeaderDate {
+              position: absolute;
+              top: 0;
+              right: 0;
+              margin: 0;
+              padding: 0;
+              color: #888;
+              text-align: right;
+              text-transform: uppercase;
+              font-weight: bold;
+              line-height: 24px;
+            }
+            .messageHeaderNavigation {
+              position: relative;
+              top: 3px;
+              z-index: 1;
+              display: inline-block;
+              margin: 0;
+              padding: 0 0 0 16px;
+            }
+            .oldie .messageHeaderNavigation {
+              display: inline;
+            }
+            .messageHeaderNavigation .uiButtonGroupRight {
+              margin-right: 0;
+            }
+            .isTopPartHeader .messageHeaderDate {
+              font-size: 10px;
+            }
+            .isInnerPartHeader .messageHeaderDate {
+              font-size: 9px;
+            }
+            .messageContactItem {
+              display: inline-block;
+              margin: 1px 0;
+              padding: 0 4px;
+              border: 1px solid;
+              border-color: #fff;
+              border-radius: 3px;
+              background-color: #fff;
+              vertical-align: top;
+            }
+            .messageContactItem:hover,
+            .messageContactItem:focus {
+              outline: none;
+              border-color: rgb(186, 186, 186);
+              border-color: rgba(0, 0, 0, 0.3);
+              border-radius: 2px;
+              background-color: #edecef;
+              background-image: -moz-linear-gradient(
+                top,
+                #ffffff 0%,
+                #e7e6e8 100%
+              );
+              background-image: -webkit-gradient(
+                linear,
+                left top,
+                left bottom,
+                color-stop(0%, #ffffff),
+                color-stop(100%, #e7e6e8)
+              );
+              background-image: -webkit-linear-gradient(
+                top,
+                #ffffff 0%,
+                #e7e6e8 100%
+              );
+              background-image: -o-linear-gradient(
+                top,
+                #ffffff 0%,
+                #e7e6e8 100%
+              );
+              background-image: linear-gradient(top, #ffffff 0%, #e7e6e8 100%);
+              background-position: 50% 50%;
+              background-repeat: no-repeat;
+              box-shadow: 0 3px 0 -2px rgba(0, 0, 0, 0.1);
+              vertical-align: top;
+              cursor: default;
+            }
+            .messageContactItem::-moz-focus-inner {
+              outline: 0;
+              border: 0;
+            }
+            .ie7 .messageContactItem {
+              display: inline;
+              zoom: 1;
+            }
+            .messageContactItem .name {
+              text-decoration: none;
+            }
+            .messageContactFrom {
+              font-weight: bold;
+              font-size: 13px;
+            }
+            .Windows .messageContactFrom {
+              line-height: 18px;
+            }
+            .Apple .messageContactFrom {
+              line-height: 19px;
+            }
+            .messageContactTo {
+              color: #666;
+              font-size: 11px;
+              line-height: 16px;
+            }
+            .messageContactComma {
+              position: absolute;
+              visibility: visible;
+              margin-left: 1px;
+              font-style: normal;
+            }
+            .messageContactItem:hover .messageContactComma,
+            .uiButtonMenuPressed .messageContactComma {
+              visibility: hidden;
+            }
+            .moreHeadersLink {
+              line-height: 20px;
+            }
+            .oldie .moreHeadersLink {
+              zoom: 1;
+            }
+            .lessMessageHeaders .hiddenComma,
+            .lessMessageHeaders .hiddenContact,
+            .moreMessageHeaders .moreHeadersLink {
+              display: none;
+            }
+            .messageSubject {
+              position: relative;
+              margin: 0;
+              padding: 0 126px 16px 32px;
+            }
+            .messageSubjectValue {
+              word-wrap: break-word;
+              font-weight: bold;
+              -webkit-user-select: text;
+              -khtml-user-select: text;
+              -moz-user-select: text;
+              -o-user-select: text;
+              user-select: text;
+            }
+            .uiButton.buttonPrintMessage {
+              padding: 0 6px;
+            }
+            .uiButton.buttonRawMessage {
+              margin-right: 0;
+              padding: 0 7px;
+            }
+            .uiButton.buttonRawMessage .uiArrowDown {
+              margin: 0;
+            }
+            .oldie .uiButton.buttonRawMessage .uiArrowDown {
+              top: -3px;
+            }
+            .messageRawLink {
+              top: 29px;
+            }
+            .isTopPartSubject {
+              font-size: 24px;
+              line-height: 31px;
+            }
+            .isInnerPartSubject {
+              font-size: 18px;
+              line-height: 21px;
+            }
+            .messageSubjectPadded {
+              padding-right: 128px;
+            }
+            .messageSubjectText {
+              display: block;
+            }
+            .messageSubject .messageStatus {
+              position: absolute;
+              top: 0;
+              left: 0;
+              margin: 0;
+              padding: 7px 0;
+              width: 32px;
+              height: 20px;
+              cursor: pointer;
+            }
+            .messageSubject .iconMessageStatus {
+              width: 32px;
+              height: 20px;
+            }
+            .messageSubjectButtons {
+              position: absolute;
+              top: 2px;
+              right: 27px;
+            }
+            .oldie .messageSubjectButtons {
+              right: 20px;
+            }
+            .messageBodyContainer {
+              -webkit-user-select: text;
+              -khtml-user-select: text;
+              -moz-user-select: text;
+              -o-user-select: text;
+              user-select: text;
+              font-size: 15px;
+              line-height: 1.67;
+            }
+            .messageAttachesCounter {
+              padding: 0 32px 16px;
+            }
+            .attachesCounterLink {
+              display: inline-block;
+              margin: 0;
+              padding: 0;
+              height: 18px;
+              color: #666;
+              font-weight: normal;
+              line-height: 18px;
+            }
+            .buttonMessageHeaders {
+              z-index: 1;
+              display: inline-block;
+              margin: 4px 0 0 4px;
+              width: 13px;
+              height: 13px;
+              vertical-align: top;
+            }
+            .attachesList {
+              display: block;
+              margin: 0 0 8px;
+              padding: 22px 32px 0;
+              vertical-align: top;
+              text-align: left;
+            }
+            .attachCell {
+              display: inline-block;
+              margin: 0;
+              padding: 0 0 20px;
+              width: 160px;
+              vertical-align: top;
+              text-align: center;
+            }
+            .ie7 .attachCell {
+              display: inline;
+            }
+            .attachItem {
+              display: block;
+              margin: 0;
+              padding: 0;
+              width: 120px;
+              line-height: 92px;
+            }
+            .attachFrame {
+              display: block;
+              height: 94px;
+            }
+            .attachLink {
+              display: block;
+              margin: 0;
+              padding: 0;
+              outline: none;
+              color: #555;
+              font-size: 11px;
+            }
+            .attachThumbnail {
+              margin: 0 auto;
+              padding: 0;
+              border: 4px solid #fff !important;
+              background-color: #fff;
+              vertical-align: middle;
+            }
+            .ie7 .attachThumbnail {
+              display: inline;
+            }
+            .attachIcon {
+              display: block;
+              margin: 0 auto;
+              width: 77px;
+              height: 94px;
+              color: transparent;
+            }
+            .attachDescription {
+              margin: 0;
+              padding: 8px 0 0;
+              font-size: 11px;
+              line-height: 14px;
+            }
+            .attachFileName {
+              white-space: nowrap;
+              word-wrap: normal;
+              font-weight: bold;
+            }
+            .attachFileSize {
+              color: #666;
+              white-space: nowrap;
+            }
+            .attachesArchiveDownload {
+              margin: 0;
+              padding: 0 0 8px;
+              text-align: center;
+            }
+            .attachesArchiveLink {
+              margin: 0 auto;
+              padding: 0;
+              width: 200px;
+              font-size: 11px;
+            }
+            .messagePart {
+              display: inline-block;
+              background: #de0;
+            }
+            .messageBody {
+              margin: 0;
+              padding: 0;
+              word-wrap: break-word;
+            }
+            .messageBody ul li {
+              list-style-type: disc;
+            }
+            .messageBody ol li {
+              list-style-type: decimal;
+            }
+            .messageBody pre {
+              white-space: pre;
+              white-space: pre-wrap;
+              word-wrap: break-word;
+            }
+            .messageBodyIndent {
+              margin: 8px 0 0 0;
+              padding-left: 8px;
+              border-left: 1px solid #ccc;
+            }
+            .quickReply {
+              clear: both;
+              padding: 16px 32px 32px;
+            }
+            .quickReplyCollapsed .quickReplyHeader,
+            .quickReplyCollapsed .quickReplyFooter {
+              display: none;
+            }
+            .quickReplyControls,
+            .quickReplyHeader {
+              vertical-align: top;
+            }
+            .quickReplyHeader {
+              overflow: hidden;
+              padding: 0 0 8px 112px;
+              font-size: 11px;
+              line-height: 25px;
+            }
+            .quickReplyControls {
+              position: absolute;
+              margin: 0 0 0 -112px;
+              padding: 0 16px 0 0;
+            }
+            .quickReplyRecipients {
+              position: relative;
+              z-index: 1;
+              overflow: hidden;
+            }
+            .quickReplyName {
+              float: left;
+              padding: 0 8px 0 0;
+              font-weight: bold;
+            }
+            .quickReplyValue {
+              position: relative;
+              z-index: 1;
+              padding: 0 3px 0 0;
+              white-space: nowrap;
+              -webkit-user-select: text;
+              -khtml-user-select: text;
+              -moz-user-select: text;
+              -o-user-select: text;
+              user-select: text;
+            }
+            .quickReplyEllipsis {
+              position: absolute;
+            }
+            .quickReplyBody {
+              overflow: hidden;
+              clear: both;
+              padding: 0 0 0 8px !important;
+              min-height: 44px;
+              border: 1px solid #b2b2b2;
+              -webkit-user-select: text;
+              -khtml-user-select: text;
+              -moz-user-select: text;
+              -o-user-select: text;
+              user-select: text;
+            }
+            .quickReplyContainer {
+              position: relative;
+              top: 6px;
+              left: 6px;
+            }
+            .qucikReplyPlaceholder {
+              position: absolute;
+              margin: 0 0 0 -13px;
+              padding: 6px 8px;
+              color: #888;
+            }
+            .qucikReplyPlaceholder-text {
+              position: relative;
+            }
+            .qucikReplyPlaceholder-link {
+              position: relative;
+              text-decoration: underline;
+            }
+            .qucikReplyPlaceholder-link:hover {
+              cursor: pointer;
+              color: #444488;
+            }
+            .quickReplyExpanded .qucikReplyPlaceholder {
+              display: none;
+            }
+            .qiuckReplyText {
+              min-height: 80px;
+              width: 98%;
+              word-wrap: break-word;
+            }
+            .quickReplyCollapsed .qiuckReplyText {
+              display: none;
+            }
+            .quickReplyFooter {
+              position: relative;
+              padding: 8px 0 0 0;
+            }
+            .uiButtonCancel {
+              position: absolute;
+              top: 8px;
+              right: 0;
+            }
+            .cancelReply-link {
+              position: absolute;
+              right: 40px;
+              color: #0055cc;
+              z-index: 20;
+            }
+            .cancelReply-link:hover {
+              cursor: pointer;
+              text-decoration: underline;
+            }
+            .messageGroupOperations {
+              display: none;
+            }
+            .messageSeparator {
+              margin: 16px 0 0;
+              padding: 0;
+              height: 16px;
+            }
+            .calendarEvent {
+              margin: 8px 32px 8px 0;
+              padding: 10px 0;
+              border: 1px solid #ddd;
+              font-size: 11px;
+            }
+            .eventRow {
+              position: relative;
+              padding: 2px 16px 3px 128px;
+              line-height: 15px;
+            }
+            .eventDate {
+              background-color: #e7e7e7;
+            }
+            .eventDateStart {
+              margin-top: 4px;
+              border-top: 4px solid #e7e7e7;
+            }
+            .eventDateEnd {
+              margin-bottom: 4px;
+              border-bottom: 4px solid #e7e7e7;
+            }
+            .eventLabel {
+              position: absolute;
+              top: 2px;
+              left: 0;
+              padding: 0;
+              width: 112px;
+              text-align: right;
+              font-size: 11px;
+              line-height: 15px;
+            }
+            .eventSummary {
+              font-weight: bold;
+              font-size: 16px;
+            }
+            .messageHeaderContacts .uiCard {
+              display: none;
+            }
+            .messageHeaderContacts
+              .messageContactItem.uiButtonMenuPressed
+              .uiPopup {
+              display: inline-block;
+              margin-left: -5px;
+            }
+            .messageContactFrom .uiPopup {
+              margin-top: 18px;
+            }
+            .oldie .messageContactFrom .uiPopup {
+              margin-top: 17px;
+            }
+            .messageContactTo .uiPopup {
+              margin-top: 16px;
+            }
+            .oldie .messageContactTo .uiPopup {
+              margin-top: 15px;
+            }
+            .messageContactPrint {
+              display: none;
+            }
+            .deliveryStatusLeftHand,
+            .deliveryStatusRightHand {
+              font-size: 13px;
+              line-height: 18px;
+              color: #333;
+            }
+            @media (max-width: 1270px) {
+              .messageBody {
+                margin: 0;
+              }
+            }
+          </style>
+          <div id="part1" class="messageBodyContainer">
+            <div class="messageBody">
+              <div class="RMCCRBqNWpJIF">
+                <table
+                  style="
+                    width: 100%;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    padding: 0;
+                    margin: 0;
+                    border: 0;
+                  "
+                  id="allrecords"
+                  class="email"
+                  cellspacing="0"
+                  cellpadding="0"
+                >
+                  <tbody>
+                    <tr>
+                      <td style="background-color: #ffffff">
+                        <table
+                          style="width: 100%; border-collapse: collapse"
+                          cellspacing="0"
+                          cellpadding="0"
+                          border="0"
+                        >
+                          <tbody>
+                            <tr>
+                              <td
+                                style="line-height: 5px"
+                                height="16"
+                                class="email__prehead"
+                              >
+                                <span
+                                  style="
+                                    font-size: 0px;
+                                    opacity: 0;
+                                    display: none;
+                                  "
+                                  class="email__prehead"
+                                  >Внутри идеи для выгодного зимнего шопинга
+                                </span>
+                                <span style="font-size: 0px; opacity: 0"
+                                  >‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                </span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                style="
+                                  padding-left: 15px;
+                                  padding-right: 15px;
+                                  padding-top: 0px;
+                                  padding-bottom: 0px;
+                                "
+                              >
+                                <table
+                                  style="
+                                    margin: 0 auto;
+                                    background-color: #ffffff;
+                                    border-spacing: 0;
+                                    width: 600px;
+                                  "
+                                  class="email__viewport"
+                                  align="center"
+                                >
+                                  <tbody>
+                                    <tr>
+                                      <td
+                                        style="padding-top: 8px"
+                                        class="email__padding-8"
+                                        align="left"
+                                      >
+                                        <a
+                                          style="outline: none"
+                                          rel="noopener"
+                                          href=""
+                                          target="_blank"
+                                          ><img
+                                            width="177"
+                                            style="
+                                              width: 177px;
+                                              max-width: 177px;
+                                            "
+                                            src="logo.png"
+                                            data-src="logo.png"
+                                            class="email__logo-width"
+                                            border="0"
+                                        /></a>
+                                      </td>
+                                      <td height="35"></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table
+                          style="width: 100%; border-collapse: collapse"
+                          cellspacing="0"
+                          cellpadding="0"
+                          border="0"
+                        >
+                          <tbody>
+                            <tr>
+                              <td
+                                style="
+                                  padding-left: 15px;
+                                  padding-right: 15px;
+                                  padding-top: 8px;
+                                  padding-bottom: 0px;
+                                "
+                                class="email__padding-8"
+                              >
+                                <table
+                                  style="
+                                    margin: 0 auto;
+                                    background-color: #ffffff;
+                                    border-spacing: 0;
+                                    width: 600px;
+                                  "
+                                  class="email__viewport"
+                                  cellspacing="0"
+                                  cellpadding="0"
+                                  border="0"
+                                  align="center"
+                                >
+                                  <tbody>
+                                    <tr>
+                                      <td style="padding: 0">
+                                        <table
+                                          width="100%"
+                                          cellspacing="0"
+                                          cellpadding="0"
+                                          border="0"
+                                        >
+                                          <tbody>
+                                            <tr>
+                                              <td
+                                                style="line-height: 5px"
+                                                height="11"
+                                              >
+                                                <img
+                                                  style="display: block"
+                                                  src="spacer.gif"
+                                                  height="11"
+                                                  data-
+                                                  src="spacer.gif"
+                                                  border="0"
+                                                />
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td
+                                                style="
+                                                  width: 100%;
+                                                  text-align: center;
+                                                "
+                                              >
+                                                <img
+                                                  width="600"
+                                                  style="
+                                                    display: block;
+                                                    width: 100%;
+                                                    max-width: 600px;
+                                                    height: auto;
+                                                  "
+                                                  src="email_banner_odezhda-obuv.png"
+                                                  data-src="email_banner_odezhda-obuv.png"
+                                                  border="0"
+                                                  align="center"
+                                                />
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table
+                          style="width: 100%; border-collapse: collapse"
+                          cellspacing="0"
+                          cellpadding="0"
+                          border="0"
+                        >
+                          <tbody>
+                            <tr>
+                              <td
+                                style="
+                                  padding-left: 15px;
+                                  padding-right: 15px;
+                                  padding-top: 0px;
+                                  padding-bottom: 0px;
+                                "
+                              >
+                                <table
+                                  style="
+                                    margin: 0 auto;
+                                    background-color: #ffffff;
+                                    border-spacing: 0;
+                                    width: 600px;
+                                  "
+                                  class="email__viewport"
+                                  cellspacing="0"
+                                  cellpadding="0"
+                                  border="0"
+                                  align="center"
+                                >
+                                  <tbody>
+                                    <tr>
+                                      <td class="padding-none">
+                                        <table
+                                          width="100%"
+                                          style="background-color: #ffffff"
+                                          cellspacing="0"
+                                          cellpadding="0"
+                                          border="0"
+                                        >
+                                          <tbody>
+                                            <tr>
+                                              <td
+                                                style="line-height: 5px"
+                                                height="30"
+                                              >
+                                                <img
+                                                  style="display: block"
+                                                  src="spacer.gif"
+                                                  height="30"
+                                                  data-
+                                                  src="spacer.gif"
+                                                  border="0"
+                                                />
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td
+                                                style="
+                                                  text-align: left;
+                                                  padding: 0 0px;
+                                                "
+                                              >
+                                                <table
+                                                  width="100%"
+                                                  cellspacing="0"
+                                                  cellpadding="0"
+                                                  border="0"
+                                                >
+                                                  <tbody>
+                                                    <tr>
+                                                      <td valign="center">
+                                                        <div
+                                                          style="
+                                                            margin-right: auto;
+                                                            font-weight: normal;
+                                                            font-family: Helvetica
+                                                                Neue,
+                                                              Helvetica, Arial,
+                                                              sans-serif;
+                                                            color: #626e78;
+                                                            line-height: 1.4em;
+                                                            font-size: 16px;
+                                                          "
+                                                        >
+                                                          Выбирайте образы
+                                                          для&nbsp;зимних
+                                                          прогулок и&nbsp;уютных
+                                                          домашних вечеров,
+                                                          работы и&nbsp;встреч
+                                                          с&nbsp;друзьями,
+                                                          корпоративов и,
+                                                          конечно же, новогодней
+                                                          ночи. С&nbsp;бонусами
+                                                          будет не&nbsp;только
+                                                          стильно, тепло
+                                                          и&nbsp;комфортно, но
+                                                          и&nbsp;выгодно. А ещё
+                                                          выгоднее — с подпиской
+                                                          СберПрайм.
+                                                          <a
+                                                            style="
+                                                              color: #44d370;
+                                                              text-decoration: none;
+                                                            "
+                                                            rel="noopener"
+                                                            href=""
+                                                            target="_blank"
+                                                            >Подключите прямо
+                                                            сейчас</a
+                                                          >.
+                                                        </div>
+                                                      </td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td
+                                                style="line-height: 5px"
+                                                height="10"
+                                              >
+                                                <img
+                                                  style="display: block"
+                                                  src="spacer.gif"
+                                                  height="10"
+                                                  data-
+                                                  src="spacer.gif"
+                                                  border="0"
+                                                />
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td
+                                                style="
+                                                  text-align: left;
+                                                  padding: 0 0px;
+                                                "
+                                              >
+                                                <table
+                                                  width="100%"
+                                                  cellspacing="0"
+                                                  cellpadding="0"
+                                                  border="0"
+                                                >
+                                                  <tbody>
+                                                    <tr>
+                                                      <td valign="center">
+                                                        <div
+                                                          style="
+                                                            margin-right: auto;
+                                                            font-weight: normal;
+                                                            font-family: Helvetica
+                                                                Neue,
+                                                              Helvetica, Arial,
+                                                              sans-serif;
+                                                            color: #626e78;
+                                                            line-height: 1.4em;
+                                                            font-size: 16px;
+                                                          "
+                                                        >
+                                                          <b
+                                                            >Несколько идей для
+                                                            вашего шопинга:</b
+                                                          >
+                                                        </div>
+                                                      </td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td
+                                                style="line-height: 5px"
+                                                height="30"
+                                              >
+                                                <img
+                                                  style="display: block"
+                                                  src="spacer.gif"
+                                                  height="30"
+                                                  data-
+                                                  src="spacer.gif"
+                                                  border="0"
+                                                />
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td
+                                                style="
+                                                  text-align: left;
+                                                  padding: 0 0;
+                                                  line-height: 1.3;
+                                                "
+                                              >
+                                                <table
+                                                  width="100%"
+                                                  style="
+                                                    border-collapse: collapse;
+                                                    border-spacing: 0;
+                                                    margin: 0;
+                                                    border: 0;
+                                                  "
+                                                  cellspacing="0"
+                                                  cellpadding="0"
+                                                  border="0"
+                                                >
+                                                  <tbody>
+                                                    <tr>
+                                                      <td
+                                                        width="48%"
+                                                        valign="top"
+                                                        style="
+                                                          padding-right: 6px;
+                                                        "
+                                                        class="email__mobile-adaptive"
+                                                        align="left"
+                                                      >
+                                                        <a
+                                                          style="
+                                                            text-decoration: none;
+                                                            outline: none;
+                                                            color: #979797;
+                                                          "
+                                                          rel="noopener"
+                                                          href=""
+                                                          class="email__text"
+                                                          target="_blank"
+                                                        >
+                                                          <table
+                                                            width="100%"
+                                                            style="
+                                                              border-collapse: collapse;
+                                                              border-spacing: 0;
+                                                              margin: 0;
+                                                              border: 0;
+                                                            "
+                                                            cellspacing="0"
+                                                            cellpadding="0"
+                                                            border="0"
+                                                          >
+                                                            <tbody>
+                                                              <tr>
+                                                                <td
+                                                                  style="
+                                                                    text-align: left;
+                                                                    line-height: 1.3;
+                                                                  "
+                                                                >
+                                                                  <table
+                                                                    width="100%"
+                                                                    style="
+                                                                      border-collapse: collapse;
+                                                                      border-spacing: 0;
+                                                                      margin: 0;
+                                                                      border: 0;
+                                                                    "
+                                                                    cellspacing="0"
+                                                                    cellpadding="0"
+                                                                    border="0"
+                                                                  >
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td
+                                                                          valign="top"
+                                                                          align="left"
+                                                                        >
+                                                                          <table
+                                                                            width="100%"
+                                                                            cellspacing="0"
+                                                                            cellpadding="0"
+                                                                            border="0"
+                                                                          >
+                                                                            <tbody>
+                                                                              <tr>
+                                                                                <td
+                                                                                  width="290"
+                                                                                >
+                                                                                  <img
+                                                                                    width="100%"
+                                                                                    style="
+                                                                                      display: block;
+                                                                                      border-radius: 16px;
+                                                                                    "
+                                                                                    src="email_banner_incity.png"
+                                                                                    data-src="email_banner_incity.png"
+                                                                                    border="0"
+                                                                                  />
+                                                                                </td>
+                                                                              </tr>
+                                                                            </tbody>
+                                                                          </table>
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                  <table>
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td
+                                                                          style="
+                                                                            line-height: 5px;
+                                                                          "
+                                                                          height="10"
+                                                                        >
+                                                                          <img
+                                                                            style="
+                                                                              display: block;
+                                                                            "
+                                                                            src="spacer.gif"
+                                                                            height="10"
+                                                                            data-src="spacer.gif"
+                                                                            border="0"
+                                                                          />
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                  <table
+                                                                    width="100%"
+                                                                    style="
+                                                                      border-collapse: collapse;
+                                                                      border-spacing: 0;
+                                                                      margin: 0;
+                                                                      border: 0;
+                                                                    "
+                                                                    cellspacing="0"
+                                                                    cellpadding="0"
+                                                                    border="0"
+                                                                  >
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td
+                                                                          valign="top"
+                                                                          align="left"
+                                                                        >
+                                                                          <table
+                                                                            width="100%"
+                                                                            cellspacing="0"
+                                                                            cellpadding="0"
+                                                                            border="0"
+                                                                          >
+                                                                            <tbody>
+                                                                              <tr>
+                                                                                <td
+                                                                                  style="
+                                                                                    text-align: left;
+                                                                                  "
+                                                                                  align="center"
+                                                                                >
+                                                                                  <div
+                                                                                    style="
+                                                                                      margin-right: auto;
+                                                                                      font-family: Helvetica
+                                                                                          Neue,
+                                                                                        Helvetica,
+                                                                                        Arial,
+                                                                                        sans-serif;
+                                                                                      color: #000000;
+                                                                                      font-size: 16px;
+                                                                                      word-wrap: normal;
+                                                                                      line-height: 1.3;
+                                                                                    "
+                                                                                  >
+                                                                                    До
+                                                                                    4%&nbsp;бонусами*
+                                                                                    и
+                                                                                    скидка
+                                                                                    до&nbsp;99%
+                                                                                    за&nbsp;бонусы
+                                                                                    на&nbsp;женскую
+                                                                                    одежду
+                                                                                    и&nbsp;аксессуары
+                                                                                  </div>
+                                                                                </td>
+                                                                              </tr>
+                                                                            </tbody>
+                                                                          </table>
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                  <table>
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td
+                                                                          style="
+                                                                            line-height: 5px;
+                                                                          "
+                                                                          height="10"
+                                                                        >
+                                                                          <img
+                                                                            style="
+                                                                              display: block;
+                                                                            "
+                                                                            src="spacer.gif"
+                                                                            height="10"
+                                                                            data-src="spacer.gif"
+                                                                            border="0"
+                                                                          />
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                </td>
+                                                              </tr>
+                                                            </tbody>
+                                                          </table>
+                                                        </a>
+                                                      </td>
+                                                      <td
+                                                        width="48%"
+                                                        valign="top"
+                                                        style="
+                                                          padding-left: 6px;
+                                                        "
+                                                        class="email__mobile-adaptive email__padding-top"
+                                                        align="left"
+                                                      >
+                                                        <a
+                                                          style="
+                                                            text-decoration: none;
+                                                            outline: none;
+                                                            color: #979797;
+                                                          "
+                                                          rel="noopener"
+                                                          href=""
+                                                          class="email__text"
+                                                          target="_blank"
+                                                        >
+                                                          <table
+                                                            width="100%"
+                                                            style="
+                                                              border-collapse: collapse;
+                                                              border-spacing: 0;
+                                                              margin: 0;
+                                                              border: 0;
+                                                            "
+                                                            cellspacing="0"
+                                                            cellpadding="0"
+                                                            border="0"
+                                                          >
+                                                            <tbody>
+                                                              <tr>
+                                                                <td
+                                                                  style="
+                                                                    text-align: left;
+                                                                    line-height: 1.3;
+                                                                  "
+                                                                >
+                                                                  <table
+                                                                    width="100%"
+                                                                    style="
+                                                                      border-collapse: collapse;
+                                                                      border-spacing: 0;
+                                                                      margin: 0;
+                                                                      border: 0;
+                                                                    "
+                                                                    cellspacing="0"
+                                                                    cellpadding="0"
+                                                                    border="0"
+                                                                  >
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td
+                                                                          valign="top"
+                                                                          align="left"
+                                                                        >
+                                                                          <table
+                                                                            width="100%"
+                                                                            cellspacing="0"
+                                                                            cellpadding="0"
+                                                                            border="0"
+                                                                          >
+                                                                            <tbody>
+                                                                              <tr>
+                                                                                <td
+                                                                                  width="290"
+                                                                                >
+                                                                                  <img
+                                                                                    width="100%"
+                                                                                    style="
+                                                                                      display: block;
+                                                                                      border-radius: 16px;
+                                                                                    "
+                                                                                    src="email_banner_kari.png"
+                                                                                    data-src="email_banner_kari.png"
+                                                                                    border="0"
+                                                                                  />
+                                                                                </td>
+                                                                              </tr>
+                                                                            </tbody>
+                                                                          </table>
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                  <table>
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td
+                                                                          style="
+                                                                            line-height: 5px;
+                                                                          "
+                                                                          height="10"
+                                                                        >
+                                                                          <img
+                                                                            style="
+                                                                              display: block;
+                                                                            "
+                                                                            src="spacer.gif"
+                                                                            height="10"
+                                                                            data-src="spacer.gif"
+                                                                            border="0"
+                                                                          />
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                  <table
+                                                                    width="100%"
+                                                                    style="
+                                                                      border-collapse: collapse;
+                                                                      border-spacing: 0;
+                                                                      margin: 0;
+                                                                      border: 0;
+                                                                    "
+                                                                    cellspacing="0"
+                                                                    cellpadding="0"
+                                                                    border="0"
+                                                                  >
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td
+                                                                          valign="top"
+                                                                          align="left"
+                                                                        >
+                                                                          <table
+                                                                            width="100%"
+                                                                            cellspacing="0"
+                                                                            cellpadding="0"
+                                                                            border="0"
+                                                                          >
+                                                                            <tbody>
+                                                                              <tr>
+                                                                                <td
+                                                                                  style="
+                                                                                    text-align: left;
+                                                                                  "
+                                                                                  align="center"
+                                                                                >
+                                                                                  <div
+                                                                                    style="
+                                                                                      margin-right: auto;
+                                                                                      font-family: Helvetica
+                                                                                          Neue,
+                                                                                        Helvetica,
+                                                                                        Arial,
+                                                                                        sans-serif;
+                                                                                      color: #000000;
+                                                                                      font-size: 16px;
+                                                                                      word-wrap: normal;
+                                                                                      line-height: 1.3;
+                                                                                    "
+                                                                                  >
+                                                                                    До
+                                                                                    7%&nbsp;бонусами
+                                                                                    и
+                                                                                    скидка
+                                                                                    до&nbsp;99%
+                                                                                    за&nbsp;бонусы**
+                                                                                    на&nbsp;обувь,
+                                                                                    аксессуары
+                                                                                    и&nbsp;украшения
+                                                                                  </div>
+                                                                                </td>
+                                                                              </tr>
+                                                                            </tbody>
+                                                                          </table>
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                  <table>
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td
+                                                                          style="
+                                                                            line-height: 5px;
+                                                                          "
+                                                                          height="10"
+                                                                        >
+                                                                          <img
+                                                                            style="
+                                                                              display: block;
+                                                                            "
+                                                                            src="spacer.gif"
+                                                                            height="10"
+                                                                            data-src="spacer.gif"
+                                                                            border="0"
+                                                                          />
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                </td>
+                                                              </tr>
+                                                            </tbody>
+                                                          </table>
+                                                        </a>
+                                                      </td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td
+                                                style="line-height: 5px"
+                                                height="10"
+                                              >
+                                                <img
+                                                  style="display: block"
+                                                  src="spacer.gif"
+                                                  height="10"
+                                                  data-
+                                                  src="spacer.gif"
+                                                  border="0"
+                                                />
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td
+                                                style="
+                                                  text-align: left;
+                                                  padding: 0 0;
+                                                  line-height: 1.3;
+                                                "
+                                              >
+                                                <table
+                                                  width="100%"
+                                                  style="
+                                                    border-collapse: collapse;
+                                                    border-spacing: 0;
+                                                    margin: 0;
+                                                    border: 0;
+                                                  "
+                                                  cellspacing="0"
+                                                  cellpadding="0"
+                                                  border="0"
+                                                >
+                                                  <tbody>
+                                                    <tr>
+                                                      <td
+                                                        width="48%"
+                                                        valign="top"
+                                                        style="
+                                                          padding-right: 6px;
+                                                        "
+                                                        class="email__mobile-adaptive"
+                                                        align="left"
+                                                      >
+                                                        <a
+                                                          style="
+                                                            text-decoration: none;
+                                                            outline: none;
+                                                            color: #979797;
+                                                          "
+                                                          rel="noopener"
+                                                          href=""
+                                                          class="email__text"
+                                                          target="_blank"
+                                                        >
+                                                          <table
+                                                            width="100%"
+                                                            style="
+                                                              border-collapse: collapse;
+                                                              border-spacing: 0;
+                                                              margin: 0;
+                                                              border: 0;
+                                                            "
+                                                            cellspacing="0"
+                                                            cellpadding="0"
+                                                            border="0"
+                                                          >
+                                                            <tbody>
+                                                              <tr>
+                                                                <td
+                                                                  style="
+                                                                    text-align: left;
+                                                                    line-height: 1.3;
+                                                                  "
+                                                                >
+                                                                  <table
+                                                                    width="100%"
+                                                                    style="
+                                                                      border-collapse: collapse;
+                                                                      border-spacing: 0;
+                                                                      margin: 0;
+                                                                      border: 0;
+                                                                    "
+                                                                    cellspacing="0"
+                                                                    cellpadding="0"
+                                                                    border="0"
+                                                                  >
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td
+                                                                          valign="top"
+                                                                          align="left"
+                                                                        >
+                                                                          <table
+                                                                            width="100%"
+                                                                            cellspacing="0"
+                                                                            cellpadding="0"
+                                                                            border="0"
+                                                                          >
+                                                                            <tbody>
+                                                                              <tr>
+                                                                                <td
+                                                                                  width="290"
+                                                                                >
+                                                                                  <img
+                                                                                    width="100%"
+                                                                                    style="
+                                                                                      display: block;
+                                                                                      border-radius: 16px;
+                                                                                    "
+                                                                                    src="email_banner_intermoda.png"
+                                                                                    data-src="email_banner_intermoda.png"
+                                                                                    border="0"
+                                                                                  />
+                                                                                </td>
+                                                                              </tr>
+                                                                            </tbody>
+                                                                          </table>
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                  <table>
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td
+                                                                          style="
+                                                                            line-height: 5px;
+                                                                          "
+                                                                          height="10"
+                                                                        >
+                                                                          <img
+                                                                            style="
+                                                                              display: block;
+                                                                            "
+                                                                            src="spacer.gif"
+                                                                            height="10"
+                                                                            data-src="spacer.gif"
+                                                                            border="0"
+                                                                          />
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                  <table
+                                                                    width="100%"
+                                                                    style="
+                                                                      border-collapse: collapse;
+                                                                      border-spacing: 0;
+                                                                      margin: 0;
+                                                                      border: 0;
+                                                                    "
+                                                                    cellspacing="0"
+                                                                    cellpadding="0"
+                                                                    border="0"
+                                                                  >
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td
+                                                                          valign="top"
+                                                                          align="left"
+                                                                        >
+                                                                          <table
+                                                                            width="100%"
+                                                                            cellspacing="0"
+                                                                            cellpadding="0"
+                                                                            border="0"
+                                                                          >
+                                                                            <tbody>
+                                                                              <tr>
+                                                                                <td
+                                                                                  style="
+                                                                                    text-align: left;
+                                                                                  "
+                                                                                  align="center"
+                                                                                >
+                                                                                  <div
+                                                                                    style="
+                                                                                      margin-right: auto;
+                                                                                      font-family: Helvetica
+                                                                                          Neue,
+                                                                                        Helvetica,
+                                                                                        Arial,
+                                                                                        sans-serif;
+                                                                                      color: #000000;
+                                                                                      font-size: 16px;
+                                                                                      word-wrap: normal;
+                                                                                      line-height: 1.3;
+                                                                                    "
+                                                                                  >
+                                                                                    5%&nbsp;бонусами
+                                                                                    и
+                                                                                    скидка
+                                                                                    до&nbsp;40%
+                                                                                    за&nbsp;бонусы
+                                                                                    на&nbsp;одежду,
+                                                                                    обувь
+                                                                                    и&nbsp;аксессуары
+                                                                                  </div>
+                                                                                </td>
+                                                                              </tr>
+                                                                            </tbody>
+                                                                          </table>
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                  <table>
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td
+                                                                          style="
+                                                                            line-height: 5px;
+                                                                          "
+                                                                          height="10"
+                                                                        >
+                                                                          <img
+                                                                            style="
+                                                                              display: block;
+                                                                            "
+                                                                            src="spacer.gif"
+                                                                            height="10"
+                                                                            data-src="spacer.gif"
+                                                                            border="0"
+                                                                          />
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                </td>
+                                                              </tr>
+                                                            </tbody>
+                                                          </table>
+                                                        </a>
+                                                      </td>
+                                                      <td
+                                                        width="48%"
+                                                        valign="top"
+                                                        style="
+                                                          padding-left: 6px;
+                                                        "
+                                                        class="email__mobile-adaptive email__padding-top"
+                                                        align="left"
+                                                      >
+                                                        <a
+                                                          style="
+                                                            text-decoration: none;
+                                                            outline: none;
+                                                            color: #979797;
+                                                          "
+                                                          rel="noopener"
+                                                          href=""
+                                                          class="email__text"
+                                                          target="_blank"
+                                                        >
+                                                          <table
+                                                            width="100%"
+                                                            style="
+                                                              border-collapse: collapse;
+                                                              border-spacing: 0;
+                                                              margin: 0;
+                                                              border: 0;
+                                                            "
+                                                            cellspacing="0"
+                                                            cellpadding="0"
+                                                            border="0"
+                                                          >
+                                                            <tbody>
+                                                              <tr>
+                                                                <td
+                                                                  style="
+                                                                    text-align: left;
+                                                                    line-height: 1.3;
+                                                                  "
+                                                                >
+                                                                  <table
+                                                                    width="100%"
+                                                                    style="
+                                                                      border-collapse: collapse;
+                                                                      border-spacing: 0;
+                                                                      margin: 0;
+                                                                      border: 0;
+                                                                    "
+                                                                    cellspacing="0"
+                                                                    cellpadding="0"
+                                                                    border="0"
+                                                                  >
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td
+                                                                          valign="top"
+                                                                          align="left"
+                                                                        >
+                                                                          <table
+                                                                            width="100%"
+                                                                            cellspacing="0"
+                                                                            cellpadding="0"
+                                                                            border="0"
+                                                                          >
+                                                                            <tbody>
+                                                                              <tr>
+                                                                                <td
+                                                                                  width="290"
+                                                                                >
+                                                                                  <img
+                                                                                    width="100%"
+                                                                                    style="
+                                                                                      display: block;
+                                                                                      border-radius: 16px;
+                                                                                    "
+                                                                                    src="email_banner_oodji.png"
+                                                                                    data-src="email_banner_oodji.png"
+                                                                                    border="0"
+                                                                                  />
+                                                                                </td>
+                                                                              </tr>
+                                                                            </tbody>
+                                                                          </table>
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                  <table>
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td
+                                                                          style="
+                                                                            line-height: 5px;
+                                                                          "
+                                                                          height="10"
+                                                                        >
+                                                                          <img
+                                                                            style="
+                                                                              display: block;
+                                                                            "
+                                                                            src="spacer.gif"
+                                                                            height="10"
+                                                                            data-src="spacer.gif"
+                                                                            border="0"
+                                                                          />
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                  <table
+                                                                    width="100%"
+                                                                    style="
+                                                                      border-collapse: collapse;
+                                                                      border-spacing: 0;
+                                                                      margin: 0;
+                                                                      border: 0;
+                                                                    "
+                                                                    cellspacing="0"
+                                                                    cellpadding="0"
+                                                                    border="0"
+                                                                  >
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td
+                                                                          valign="top"
+                                                                          align="left"
+                                                                        >
+                                                                          <table
+                                                                            width="100%"
+                                                                            cellspacing="0"
+                                                                            cellpadding="0"
+                                                                            border="0"
+                                                                          >
+                                                                            <tbody>
+                                                                              <tr>
+                                                                                <td
+                                                                                  style="
+                                                                                    text-align: left;
+                                                                                  "
+                                                                                  align="center"
+                                                                                >
+                                                                                  <div
+                                                                                    style="
+                                                                                      margin-right: auto;
+                                                                                      font-family: Helvetica
+                                                                                          Neue,
+                                                                                        Helvetica,
+                                                                                        Arial,
+                                                                                        sans-serif;
+                                                                                      color: #000000;
+                                                                                      font-size: 16px;
+                                                                                      word-wrap: normal;
+                                                                                      line-height: 1.3;
+                                                                                    "
+                                                                                  >
+                                                                                    До
+                                                                                    4%&nbsp;бонусами*
+                                                                                    и
+                                                                                    скидка
+                                                                                    до&nbsp;99%
+                                                                                    за
+                                                                                    бонусы
+                                                                                    на&nbsp;женскую
+                                                                                    и&nbsp;мужскую
+                                                                                    одежду
+                                                                                  </div>
+                                                                                </td>
+                                                                              </tr>
+                                                                            </tbody>
+                                                                          </table>
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                  <table>
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td
+                                                                          style="
+                                                                            line-height: 5px;
+                                                                          "
+                                                                          height="10"
+                                                                        >
+                                                                          <img
+                                                                            style="
+                                                                              display: block;
+                                                                            "
+                                                                            src="spacer.gif"
+                                                                            height="10"
+                                                                            data-src="spacer.gif"
+                                                                            border="0"
+                                                                          />
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                </td>
+                                                              </tr>
+                                                            </tbody>
+                                                          </table>
+                                                        </a>
+                                                      </td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td
+                                                style="line-height: 5px"
+                                                height="30"
+                                              >
+                                                <img
+                                                  style="display: block"
+                                                  src="spacer.gif"
+                                                  height="30"
+                                                  data-
+                                                  src="spacer.gif"
+                                                  border="0"
+                                                />
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td align="center">
+                                                <table
+                                                  width="240"
+                                                  style="
+                                                    border-collapse: collapse;
+                                                  "
+                                                  class="btn__width"
+                                                  cellspacing="0"
+                                                  cellpadding="0"
+                                                  border="0"
+                                                >
+                                                  <tbody>
+                                                    <tr>
+                                                      <td
+                                                        style="
+                                                          text-align: center;
+                                                          background: #44d370;
+                                                          color: #ffffff;
+                                                          border-radius: 10px;
+                                                        "
+                                                        height="48"
+                                                      >
+                                                        <div
+                                                          style="
+                                                            margin: 0 auto;
+                                                            padding: 8px 20px;
+                                                            display: block;
+                                                            font-weight: normal;
+                                                            font-family: Helvetica
+                                                                Neue,
+                                                              Helvetica, Arial,
+                                                              sans-serif;
+                                                            color: #ffffff;
+                                                            font-size: 18px;
+                                                            word-wrap: normal;
+                                                            line-height: 1.3;
+                                                          "
+                                                          class="email__text"
+                                                        >
+                                                          <a
+                                                            style="
+                                                              text-decoration: none;
+                                                              outline: none;
+                                                              color: #ffffff;
+                                                              display: block;
+                                                            "
+                                                            rel="noopener"
+                                                            href=""
+                                                            target="_blank"
+                                                            >Больше
+                                                            предложений</a
+                                                          >
+                                                        </div>
+                                                      </td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td
+                                                style="line-height: 5px"
+                                                height="30"
+                                              >
+                                                <img
+                                                  style="display: block"
+                                                  src="spacer.gif"
+                                                  height="30"
+                                                  data-
+                                                  src="spacer.gif"
+                                                  border="0"
+                                                />
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td
+                                                style="
+                                                  text-align: left;
+                                                  padding: 0 0px;
+                                                "
+                                              >
+                                                <table
+                                                  width="100%"
+                                                  cellspacing="0"
+                                                  cellpadding="0"
+                                                  border="0"
+                                                >
+                                                  <tbody>
+                                                    <tr>
+                                                      <td valign="center">
+                                                        <div
+                                                          style="
+                                                            margin-right: auto;
+                                                            font-weight: normal;
+                                                            font-family: Helvetica
+                                                                Neue,
+                                                              Helvetica, Arial,
+                                                              sans-serif;
+                                                            color: #626e78;
+                                                            line-height: 1.4em;
+                                                            font-size: 16px;
+                                                          "
+                                                        >
+                                                          <i
+                                                            >*&nbsp;4%&nbsp;бонусами
+                                                            будут начисляться
+                                                            с&nbsp;подпиской
+                                                            <a
+                                                              style="
+                                                                color: #44d370;
+                                                                text-decoration: none;
+                                                              "
+                                                              rel="noopener"
+                                                              href=""
+                                                              target="_blank"
+                                                              >СберПрайм</a
+                                                            >.
+                                                            <a
+                                                              style="
+                                                                color: #44d370;
+                                                                text-decoration: none;
+                                                              "
+                                                              rel="noopener"
+                                                              href=""
+                                                              target="_blank"
+                                                              >Подробнее
+                                                              о&nbsp;начислении
+                                                              бонусов</a
+                                                            >.</i
+                                                          >
+                                                        </div>
+                                                      </td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td
+                                                style="line-height: 5px"
+                                                height="10"
+                                              >
+                                                <img
+                                                  style="display: block"
+                                                  src="spacer.gif"
+                                                  height="10"
+                                                  data-
+                                                  src="spacer.gif"
+                                                  border="0"
+                                                />
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td
+                                                style="
+                                                  text-align: left;
+                                                  padding: 0 0px;
+                                                "
+                                              >
+                                                <table
+                                                  width="100%"
+                                                  cellspacing="0"
+                                                  cellpadding="0"
+                                                  border="0"
+                                                >
+                                                  <tbody>
+                                                    <tr>
+                                                      <td valign="center">
+                                                        <div
+                                                          style="
+                                                            margin-right: auto;
+                                                            font-weight: normal;
+                                                            font-family: Helvetica
+                                                                Neue,
+                                                              Helvetica, Arial,
+                                                              sans-serif;
+                                                            color: #626e78;
+                                                            line-height: 1.4em;
+                                                            font-size: 16px;
+                                                          "
+                                                        >
+                                                          <i
+                                                            >** Скидка действует
+                                                            на&nbsp;покупки
+                                                            от&nbsp;3&nbsp;000&nbsp;₽.</i
+                                                          >
+                                                        </div>
+                                                      </td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td
+                                                style="line-height: 5px"
+                                                height="42"
+                                              >
+                                                <img
+                                                  style="display: block"
+                                                  src="spacer.gif"
+                                                  height="42"
+                                                  data-
+                                                  src="spacer.gif"
+                                                  border="0"
+                                                />
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td style="line-height: 5px" height="16">
+                                        <img
+                                          style="display: block"
+                                          src="spacer.gif"
+                                          height="16"
+                                          data-
+                                          src="spacer.gif"
+                                          border="0"
+                                        />
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table
+                          style="
+                            width: 100%;
+                            border-collapse: collapse;
+                            border-spacing: 0;
+                            margin: 0;
+                            border: 0;
+                          "
+                          cellspacing="0"
+                          cellpadding="0"
+                        >
+                          <tbody>
+                            <tr>
+                              <td
+                                style="padding-left: 15px; padding-right: 15px"
+                              >
+                                <table
+                                  style="
+                                    margin: 0 auto;
+                                    border-spacing: 0;
+                                    width: 600px;
+                                  "
+                                  class="email__viewport"
+                                  align="center"
+                                >
+                                  <tbody>
+                                    <tr>
+                                      <td>
+                                        <table
+                                          style="
+                                            width: 100%;
+                                            border-collapse: collapse;
+                                          "
+                                          cellspacing="0"
+                                          cellpadding="0"
+                                          border="0"
+                                        >
+                                          <tbody>
+                                            <tr>
+                                              <td style="width: 100%">
+                                                <table
+                                                  width="100%"
+                                                  style="
+                                                    border-collapse: collapse;
+                                                  "
+                                                  cellspacing="0"
+                                                  cellpadding="0"
+                                                  border="0"
+                                                >
+                                                  <tbody>
+                                                    <tr>
+                                                      <td
+                                                        class="email__mobile-adaptive email__center"
+                                                      >
+                                                        <table
+                                                          style="
+                                                            border-collapse: collapse;
+                                                          "
+                                                          class="email__center"
+                                                          cellspacing="0"
+                                                          cellpadding="0"
+                                                          border="0"
+                                                        >
+                                                          <tbody>
+                                                            <tr>
+                                                              <td>
+                                                                <a
+                                                                  style="
+                                                                    outline: none;
+                                                                  "
+                                                                  rel="noopener"
+                                                                  href=""
+                                                                  target="_blank"
+                                                                >
+                                                                  <img
+                                                                    width="200"
+                                                                    style="
+                                                                      width: 100%;
+                                                                      max-width: 200px;
+                                                                      height: auto;
+                                                                    "
+                                                                    src="button_app_2.png"
+                                                                    data-src="button_app_2.png"
+                                                                    class="email_img_app"
+                                                                    border="0"
+                                                                    align="center"
+                                                                /></a>
+                                                              </td>
+                                                            </tr>
+                                                          </tbody>
+                                                        </table>
+                                                      </td>
+                                                      <td
+                                                        width="120px"
+                                                        style="
+                                                          text-align: right;
+                                                        "
+                                                        class="email__mobile-adaptive email__center email__seti-width email__padding-top"
+                                                        align="right"
+                                                      >
+                                                        <table
+                                                          style="
+                                                            border-collapse: collapse;
+                                                            text-align: right;
+                                                          "
+                                                          class="email__center"
+                                                          cellspacing="0"
+                                                          cellpadding="0"
+                                                          border="0"
+                                                        >
+                                                          <tbody>
+                                                            <tr>
+                                                              <td
+                                                                style="
+                                                                  padding: 0 4px;
+                                                                "
+                                                                align="right"
+                                                              >
+                                                                <a
+                                                                  style="
+                                                                    text-decoration: none;
+                                                                  "
+                                                                  rel="noopener"
+                                                                  href=""
+                                                                  target="_blank"
+                                                                  ><img
+                                                                    width="38"
+                                                                    style="
+                                                                      display: block;
+                                                                      width: 32px;
+                                                                    "
+                                                                    src="ok_new.png"
+                                                                    data-src="ok_new.png"
+                                                                    class="email_img_seti"
+                                                                    border="0"
+                                                                /></a>
+                                                              </td>
+                                                              <td
+                                                                style="
+                                                                  padding: 0 4px;
+                                                                "
+                                                                align="right"
+                                                              >
+                                                                <a
+                                                                  style="
+                                                                    text-decoration: none;
+                                                                  "
+                                                                  rel="noopener"
+                                                                  href=""
+                                                                  target="_blank"
+                                                                  ><img
+                                                                    width="38"
+                                                                    style="
+                                                                      display: block;
+                                                                      width: 32px;
+                                                                    "
+                                                                    src="vk_new.png"
+                                                                    data-src="vk_new.png"
+                                                                    class="email_img_seti"
+                                                                    border="0"
+                                                                /></a>
+                                                              </td>
+                                                              <td
+                                                                style="
+                                                                  padding: 0 4px;
+                                                                "
+                                                                align="right"
+                                                              >
+                                                                <a
+                                                                  style="
+                                                                    text-decoration: none;
+                                                                  "
+                                                                  rel="noopener"
+                                                                  href=""
+                                                                  target="_blank"
+                                                                  ><img
+                                                                    width="38"
+                                                                    style="
+                                                                      display: block;
+                                                                      width: 32px;
+                                                                    "
+                                                                    src="tg_new.png"
+                                                                    data-src="tg_new.png"
+                                                                    class="email_img_seti"
+                                                                    border="0"
+                                                                /></a>
+                                                              </td>
+                                                            </tr>
+                                                          </tbody>
+                                                        </table>
+                                                      </td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table
+                          style="
+                            width: 100%;
+                            border-collapse: collapse;
+                            border-spacing: 0;
+                            margin: 0;
+                            border: 0;
+                          "
+                          cellspacing="0"
+                          cellpadding="0"
+                        >
+                          <tbody>
+                            <tr>
+                              <td
+                                style="padding-left: 15px; padding-right: 15px"
+                              >
+                                <table
+                                  style="
+                                    margin: 0 auto;
+                                    border-spacing: 0;
+                                    width: 600px;
+                                  "
+                                  class="email__viewport"
+                                  align="center"
+                                >
+                                  <tbody>
+                                    <tr>
+                                      <td style="padding: 0">
+                                        <table
+                                          width="100%"
+                                          cellspacing="0"
+                                          cellpadding="0"
+                                          border="0"
+                                        >
+                                          <tbody>
+                                            <tr>
+                                              <td
+                                                style="line-height: 5px"
+                                                height="32"
+                                              >
+                                                <img
+                                                  style="display: block"
+                                                  src="spacer.gif"
+                                                  height="32"
+                                                  data-
+                                                  src="spacer.gif"
+                                                  border="0"
+                                                />
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td style="text-align: left">
+                                                <div
+                                                  style="
+                                                    margin-right: auto;
+                                                    font-weight: normal;
+                                                    font-family: Helvetica Neue,
+                                                      Helvetica, Arial,
+                                                      sans-serif;
+                                                    color: #262a30;
+                                                    font-size: 9px;
+                                                  "
+                                                >
+                                                  <span
+                                                    style="
+                                                      font-family: Helvetica
+                                                          Neue,
+                                                        Helvetica, Arial,
+                                                        sans-serif;
+                                                      color: #262a30;
+                                                      font-size: 9px;
+                                                      line-height: 1.6em;
+                                                    "
+                                                    class="email__disc"
+                                                  >
+                                                    В случае любых вопросов,
+                                                    касающихся программы,
+                                                    обращайтесь по номеру
+                                                    <a
+                                                      style="
+                                                        color: #262a30;
+                                                        text-decoration: none;
+                                                      "
+                                                      rel="noopener"
+                                                      href="tel:900"
+                                                      target="_blank"
+                                                      >900</a
+                                                    >
+                                                    (далее скажите «Бонусы»).
+                                                  </span>
+                                                </div>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td
+                                                style="line-height: 5px"
+                                                height="16"
+                                              >
+                                                <img
+                                                  style="display: block"
+                                                  src="spacer.gif"
+                                                  height="16"
+                                                  data-
+                                                  src="spacer.gif"
+                                                  border="0"
+                                                />
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table
+                          style="
+                            width: 100%;
+                            border-collapse: collapse;
+                            border-spacing: 0;
+                            margin: 0;
+                            border: 0;
+                          "
+                          cellspacing="0"
+                          cellpadding="0"
+                        >
+                          <tbody>
+                            <tr>
+                              <td
+                                style="padding-left: 15px; padding-right: 15px"
+                              >
+                                <table
+                                  style="
+                                    margin: 0 auto;
+                                    border-spacing: 0;
+                                    width: 600px;
+                                  "
+                                  class="email__viewport"
+                                  align="center"
+                                >
+                                  <tbody>
+                                    <tr>
+                                      <td>
+                                        <table
+                                          width="100%"
+                                          style="width: 100%"
+                                          cellspacing="0"
+                                          cellpadding="0"
+                                          border="0"
+                                        >
+                                          <tbody>
+                                            <tr>
+                                              <td style="text-align: justify">
+                                                <div
+                                                  style="
+                                                    margin: 0 auto;
+                                                    font-family: Helvetica Neue,
+                                                      Helvetica, Arial,
+                                                      sans-serif;
+                                                    color: #919294;
+                                                    font-size: 9px;
+                                                    line-height: 16px;
+                                                  "
+                                                  class="email__disc-2"
+                                                >
+                                                  <span
+                                                    style="
+                                                      font-family: Helvetica
+                                                          Neue,
+                                                        Helvetica, Arial,
+                                                        sans-serif;
+                                                      color: #919294;
+                                                      font-size: 9px;
+                                                    "
+                                                    class="email__disc-2"
+                                                    >Реклама, АО «ЦПЛ», ИНН
+                                                    7702770003
+                                                    <br />
+                                                    Вы получили это сообщение
+                                                    как участник бонусной
+                                                    программы «СберСпасибо».
+                                                    Если Вы хотите отписаться от
+                                                    информирования о новостях и
+                                                    акциях с повышенными
+                                                    бонусами в рассылке, Вы
+                                                    можете сделать это по
+                                                    <a
+                                                      style="
+                                                        outline: none;
+                                                        color: #44d370;
+                                                        text-decoration: none;
+                                                      "
+                                                      rel="noopener"
+                                                      href=""
+                                                      target="_blank"
+                                                    >
+                                                      <font
+                                                        style="
+                                                          color: #44d370;
+                                                          text-decoration: none;
+                                                        "
+                                                        face="Arial"
+                                                        color="#44D370"
+                                                        >ссылке</font
+                                                      >
+                                                    </a>
+                                                  </span>
+                                                </div>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td
+                                                style="line-height: 5px"
+                                                height="16"
+                                              >
+                                                <img
+                                                  style="display: block"
+                                                  src="spacer.gif"
+                                                  height="16"
+                                                  data-src="spacer.gif"
+                                                  border="0"
+                                                />
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table
+                          style="
+                            width: 100%;
+                            border-collapse: collapse;
+                            border-spacing: 0;
+                            margin: 0;
+                            border: 0;
+                            background-color: #ffffff;
+                          "
+                          cellspacing="0"
+                          cellpadding="0"
+                        >
+                          <tbody>
+                            <tr>
+                              <td
+                                style="padding-left: 15px; padding-right: 15px"
+                              >
+                                <table
+                                  style="
+                                    margin: 0 auto;
+                                    border-spacing: 0;
+                                    width: 600px;
+                                  "
+                                  class="email__viewport"
+                                  align="center"
+                                >
+                                  <tbody>
+                                    <tr>
+                                      <td>
+                                        <table
+                                          width="100%"
+                                          style="
+                                            width: 100%;
+                                            background-color: #ffffff;
+                                          "
+                                          cellspacing="0"
+                                          cellpadding="0"
+                                          border="0"
+                                        >
+                                          <tbody>
+                                            <tr>
+                                              <td style="text-align: justify">
+                                                <div
+                                                  style="
+                                                    margin: 0 auto;
+                                                    font-family: Helvetica Neue,
+                                                      Helvetica, Arial,
+                                                      sans-serif;
+                                                    color: #919294;
+                                                    font-size: 9px;
+                                                    line-height: 16px;
+                                                  "
+                                                  class="email__disc-2"
+                                                >
+                                                  <span
+                                                    style="
+                                                      font-family: Helvetica
+                                                          Neue,
+                                                        Helvetica, Arial,
+                                                        sans-serif;
+                                                      color: #919294;
+                                                      font-size: 9px;
+                                                    "
+                                                    class="email__disc-2"
+                                                  >
+                                                    Участникам Программы
+                                                    «СберСпасибо» (далее -
+                                                    Программа) доступно
+                                                    предложение по Начислению и
+                                                    Списанию Бонусов в обмен на
+                                                    Скидку. Списание Бонусов
+                                                    производится по курсу 1
+                                                    Бонус = 1 рубль Скидки.
+                                                    Информация о 99% скидки
+                                                    приведена в качестве
+                                                    примера. В случае, если
+                                                    первоначальная стоимость
+                                                    Товара составляет 1000 руб.,
+                                                    то для получения 99% скидки
+                                                    Участнику необходимо Списать
+                                                    990 Бонусов. Возможность
+                                                    Списания Бонусов может быть
+                                                    ограничена продавцом Товара.
+                                                    <br /><a
+                                                      style="
+                                                        color: #44d370;
+                                                        text-decoration: none;
+                                                      "
+                                                      rel="noopener"
+                                                      href=""
+                                                      target="_blank"
+                                                      >Мегамаркет</a
+                                                    >: Организатором Акции
+                                                    является ООО «МАРКЕТПЛЕЙС»,
+                                                    ОГРН: 1167746803180, 105082,
+                                                    город Москва, Спартаковская
+                                                    площадь, дом 16/15 строение
+                                                    6. Начисление бонусов (1%) -
+                                                    <a
+                                                      style="
+                                                        color: #44d370;
+                                                        text-decoration: none;
+                                                      "
+                                                      rel="noopener"
+                                                      href=""
+                                                      target="_blank"
+                                                      >Акция</a
+                                                    >
+                                                    проводится в период c
+                                                    01.06.2021 г. и не
+                                                    ограничена сроком. Для
+                                                    получения повышенного
+                                                    начисления бонусов (4%) в
+                                                    рамках подписки СберПрайм
+                                                    или подключённого
+                                                    (активного) ТП «СберПрайм+»
+                                                    необходимо авторизоваться по
+                                                    Сбер ID. Более подробную
+                                                    информацию можно уточнить
+                                                    <a
+                                                      style="
+                                                        color: #44d370;
+                                                        text-decoration: none;
+                                                      "
+                                                      rel="noopener"
+                                                      href=""
+                                                      target="_blank"
+                                                      >по ссылке</a
+                                                    >. Списание бонусов -
+                                                    <a
+                                                      style="
+                                                        color: #44d370;
+                                                        text-decoration: none;
+                                                      "
+                                                      rel="noopener"
+                                                      href=""
+                                                      target="_blank"
+                                                      >Акция</a
+                                                    >
+                                                    проводится в период c
+                                                    01.06.2021 г. и не
+                                                    ограничена сроком. Имеются
+                                                    ограничения. Подробнее –
+                                                    <a
+                                                      style="
+                                                        color: #44d370;
+                                                        text-decoration: none;
+                                                      "
+                                                      rel="noopener"
+                                                      href=""
+                                                      target="_blank"
+                                                      >по ссылке</a
+                                                    >. <br /><a
+                                                      style="
+                                                        color: #44d370;
+                                                        text-decoration: none;
+                                                      "
+                                                      rel="noopener"
+                                                      href=""
+                                                      target="_blank"
+                                                      >kari</a
+                                                    >: Организатором Акции
+                                                    является Общество с
+                                                    ограниченной
+                                                    ответственностью «КАРИ»,
+                                                    ОГРН: 1117746491500, 107140,
+                                                    г. Москва, ул. Русаковская,
+                                                    д. 13. Акция проводится в
+                                                    период c 01 июня 2014 г. и
+                                                    не ограничена сроком
+                                                    действия. Подробную
+                                                    информацию о сроках
+                                                    проведения Акций и порядке
+                                                    начисления и списания
+                                                    бонусов –
+                                                    <a
+                                                      style="
+                                                        color: #44d370;
+                                                        text-decoration: none;
+                                                      "
+                                                      rel="noopener"
+                                                      href=""
+                                                      target="_blank"
+                                                      >по ссылке</a
+                                                    >. <br /><a
+                                                      style="
+                                                        color: #44d370;
+                                                        text-decoration: none;
+                                                      "
+                                                      rel="noopener"
+                                                      href=""
+                                                      target="_blank"
+                                                      >INTERMODA</a
+                                                    >: Организатором Акции
+                                                    является: ИП Карабельник
+                                                    М.А. (ОГРНИП
+                                                    304526008900014), г.
+                                                    Н.Новгород, ул. Грузинская,
+                                                    д.8, кв.1. Акция проводится
+                                                    в период c 23.03.2020 г. и
+                                                    не ограничена сроком
+                                                    действия. Подробнее –
+                                                    <a
+                                                      style="
+                                                        color: #44d370;
+                                                        text-decoration: none;
+                                                      "
+                                                      rel="noopener"
+                                                      href=""
+                                                      target="_blank"
+                                                      >по ссылке</a
+                                                    >. <br />Подписка СберПрайм
+                                                    или СберПрайм+ - услуги АО
+                                                    «ЦПЛ» по организации и
+                                                    обеспечению предоставления
+                                                    физическим лицам,
+                                                    заключившим Договор на
+                                                    Подписку СберПрайм или
+                                                    СберПрайм+, доступа к
+                                                    комплексу Сервисов Партнёров
+                                                    Подписки СберПрайм или
+                                                    СберПрайм+ в порядке,
+                                                    установленном в Договоре на
+                                                    Подписку СберПрайм или
+                                                    СберПрайм+ (включая
+                                                    поощрение, доступное в
+                                                    рамках уникальной
+                                                    маркетинговой акции Партнера
+                                                    СберПрайм или СберПрайм+).
+                                                    Подробная информация о
+                                                    Партнерах СберПрайм или
+                                                    СберПрайм+, сервисах
+                                                    Партнёров СберПрайм или
+                                                    СберПрайм+, условиях и
+                                                    ограничениях их
+                                                    предоставления в рамках
+                                                    Подписки СберПрайм или
+                                                    СберПрайм+ содержится на
+                                                    сайте в сети Интернет
+                                                    <a
+                                                      style="
+                                                        color: #44d370;
+                                                        text-decoration: none;
+                                                      "
+                                                      rel="noopener"
+                                                      href=""
+                                                      target="_blank"
+                                                      >https://sberprime.sber.ru/static/offers/offer.pdf</a
+                                                    >. <br />Сбер ID — сервис,
+                                                    предоставляемый Банком в
+                                                    соответствии с одним из
+                                                    следующих документов (и при
+                                                    условии заключения/акцепта):
+                                                    (а) договора банковского
+                                                    обслуживания, (б) договора
+                                                    на выпуск и обслуживание
+                                                    банковской карты ПАО
+                                                    Сбербанк, (в) условиях
+                                                    публичной оферты «Об
+                                                    условиях предоставления ПАО
+                                                    Сбербанк сервиса Сбер ID».
+                                                    Подробную информацию о
+                                                    сервисе Сбер ID можно
+                                                    получить на сайте Банка
+                                                    <a
+                                                      style="
+                                                        color: #44d370;
+                                                        text-decoration: none;
+                                                      "
+                                                      rel="noopener"
+                                                      href=""
+                                                      target="_blank"
+                                                      >www.sberbank.ru</a
+                                                    >. <br />Информация об
+                                                    Организаторе Акций, условиях
+                                                    участия в Акциях, правилах
+                                                    проведения Акций, количестве
+                                                    Поощрений, сроках, месте и
+                                                    порядке их получения,
+                                                    ограничениях размещена на
+                                                    Сайте Программы:
+                                                    <a
+                                                      style="
+                                                        color: #44d370;
+                                                        text-decoration: none;
+                                                      "
+                                                      rel="noopener"
+                                                      href=""
+                                                      target="_blank"
+                                                      >www.spasibosberbank.ru</a
+                                                    >. Организатор Программы -
+                                                    ПАО Сбербанк (Генеральная
+                                                    лицензия Банка России на
+                                                    осуществление банковских
+                                                    операций № 1481 от
+                                                    11.08.2015). С подробной
+                                                    информацией о Правилах
+                                                    Программы, способах
+                                                    регистрации в Программе,
+                                                    условиях Начисления и
+                                                    Списания Бонусов,
+                                                    ограничениях можно
+                                                    ознакомиться на Сайте
+                                                    Программы. Организатор
+                                                    Программы/Акции вправе в
+                                                    одностороннем порядке
+                                                    вносить изменения в Правила
+                                                    Программы/Акции, в том числе
+                                                    в части сроков её
+                                                    проведения, количества,
+                                                    сроков и иных условий
+                                                    получения Поощрений. Термины
+                                                    с заглавной буквы, значение
+                                                    которых не определено в
+                                                    данном тексте, употребляются
+                                                    в значении, определенном в
+                                                    Правилах Программы.
+                                                    Поддержка по условиям
+                                                    Программы осуществляется по
+                                                    звонку с мобильного телефона
+                                                    на номер 900. Сведения
+                                                    действительны на 5.12.2023.
+                                                    Не является публичной
+                                                    офертой.
+                                                  </span>
+                                                </div>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td style="line-height: 5px" height="20">
+                                        <img
+                                          style="display: block"
+                                          src="spacer.gif"
+                                          height="20"
+                                          data-
+                                          src="spacer.gif"
+                                          border="0"
+                                        />
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <img
+                  width="1"
+                  src="/p/NExDCmqjb03sfi5mMBYI1Q/https/read.sendsay.ru/1.gif/sbrf,pegate,1757833202ef4effa2e91ec4978bf420,angel%2Drude%40rambler.ru,20231206224216,NONE,D1541,CNDZlZDIyZDktNmE4My00Mzk0LTkyZTktMWVlZWYwNzBiMzAx,d1983,S5585974,s33"
+                  height="1"
+                  data-src="IyZDktNmE4My00Mzk0LTkyZTktMWVlZWYwNzBiMzAx,d1983,S5585974,s33"
+                  border="0"
+                  alt=""
+                />
+              </div>
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
